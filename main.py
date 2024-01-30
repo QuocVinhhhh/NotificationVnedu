@@ -1,6 +1,6 @@
-from keep_alive import keep_alive
+# from keep_alive import keep_alive
 
-keep_alive()
+# keep_alive()
 
 from datetime import datetime
 from time import sleep
@@ -14,9 +14,9 @@ url_notepad = "https://notepad.vn/dGhvbmdiYW9WbmVkdQ"
 url = "aHR0cHM6Ly9hcGkucHJveHlzY3JhcGUuY29tL3YzL2ZyZWUtcHJveHktbGlzdC9nZXQ/cmVxdWVzdD1kaXNwbGF5cHJveGllcyZwcm90b2NvbD1odHRwJmNvdW50cnk9Vk4mdGltZW91dD05OTk5OTk5OSZwcm94eV9mb3JtYXQ9aXBwb3J0JmZvcm1hdD10ZXh0"
 url_telegram = "https://pushmore.io/webhook/PPw89b5TJ4uyNzmvCqrNkkwN"
 
-link1 = "https://hocbadientu.vnedu.vn/sllservices/index.php?callback=jQuery1124036300688905600853_1706275801058&call=solienlac.checkSll&mahocsinh=2203059504&tinh_id=1&password=0356113982&namhoc=2023&dot_diem_id=0&_=1706275801063"
-link2 = "http://hocbadientu.vnedu.vn/sllservices/index.php?callback=jQuery112405717391329937827_1705760285582&call=solienlac.getSodiem&mahocsinh=2203059504&key=d33e425220d1f1184a9fb9a477055fd6&namhoc=2023&tinh_id=1&dot_diem_id=0&_=1705760285586"
-jQuery = "jQuery112405717391329937827_1705760285582"
+link1 = "https://hocbadientu.vnedu.vn/sllservices/index.php?callback=jQuery1124021698329792674498_1706626160790&call=solienlac.checkSll&mahocsinh=2203059504&tinh_id=1&password=0356113982&namhoc=2023&dot_diem_id=0&_=1706626160793"
+link2 = "https://hocbadientu.vnedu.vn/sllservices/index.php?callback=jQuery1124021698329792674498_1706626160790&call=solienlac.getSodiem&mahocsinh=2203059504&key=d33e425220d1f1184a9fb9a477055fd6&namhoc=2023&tinh_id=1&dot_diem_id=0&_=1706626160794"
+jQuery = "jQuery1124021698329792674498_1706626160790"
 showScore = True
 hoc_ky = 1
 
@@ -82,8 +82,8 @@ def rq(proxy):
         cookie_string = '; '.join([f'{name}={value}' for name, value in (rq1.cookies).items()])
         # headers = {'Cookie': cookie_string}
         response = requests.get(link2, headers=headers, proxies=proxies).text
-        response = (response.replace(jQuery + "(", "")).replace(")", "")
-        print(response)
+
+        response = response.split(f"{jQuery}(")[1].replace(")", "")
         parsed_response = json.loads(response)
         return parsed_response
     except:
