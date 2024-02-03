@@ -1,6 +1,6 @@
-# from keep_alive import keep_alive
+from keep_alive import keep_alive
 
-# keep_alive()
+keep_alive()
 
 from datetime import datetime
 from time import sleep
@@ -32,7 +32,7 @@ def read_notepad():
     r = requests.get(url_notepad).text
     content = r.split('class="contents" spellcheck="true">')[1].split('<')[0]
     content = html.unescape(content)
-    return content
+    return content.replace("'", '"')
 
 def decode_base64(encoded_string):
     try:
